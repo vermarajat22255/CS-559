@@ -20,8 +20,16 @@ grad = zeros(size(theta));
 Hypo_x = sigmoid(X*theta);
 Jtemp = (-1/m) * sum( y.* log(Hypo_x) + (1 - y).*(log(1 - Hypo_x)) ) ;
 J = Jtemp+ ((lambda / (2*m) ) * sum( (theta(2:length(theta))).^2 ));   
-grad_temp = (1/m) * (X'*(Hypo_x - y));
-grad = grad_temp + (lambda / m)*theta;
+
+%grad_temp = (1/m) * (X'*(Hypo_x - y));
+
+%grad = grad_temp + (lambda / m)*theta;
+
+
+
+thetaZero = theta;
+thetaZero(1) = 0;
+grad = ((1 / m) * (Hypo_x - y)' * X) + lambda / m * thetaZero';
 % =============================================================
 
 end
