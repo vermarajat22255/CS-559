@@ -13,8 +13,8 @@ figure; hold on;
 %
 xpos = find(y==1);
 xneg = find(y==0);
-plot(X(xpos,1),X(xpos,2), 'ks','LineWidth',2, 'MarkerSize',7,'MarkerFaceColor','g');
-plot(X(xneg,1),X(xneg, 2),'ko','LineWidth',2, 'MarkerSize',7,'MarkerFaceColor','r');
+plot(X(xpos,1),X(xpos,2), 'ks','LineWidth',2, 'MarkerSize',5,'MarkerFaceColor','g');
+plot(X(xneg,1),X(xneg, 2),'ko','LineWidth',2, 'MarkerSize',5,'MarkerFaceColor','r');
 
 % =========================================================================
 
