@@ -1,0 +1,11 @@
+Search Queries --
+* earliest= -24h@h latest= -12h@h
+
+
+- refers to the past records,
+24h is the last 24 hours
+earliest is keyword
+@h specifies records down to the hours instead to the seconds or minutes
+
+
+
