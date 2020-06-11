@@ -1,4 +1,13 @@
+There can be multiple hosts, and each host can have multiple Sources--
+for example in a local host there is a single host machine which have many source log files.
+
+
+-- The source type in data summary of an event tells you what kind of data it is, usually based on how the data is formatted. This classification lets you search for the same type of data across multiple sources and hosts.
+
+__________________________________________________
 Search Queries --
+__________________________________________________
+
 * earliest= -24h@h latest= -12h@h
 
 
@@ -8,4 +17,56 @@ earliest is keyword
 @h specifies records down to the hours instead to the seconds or minutes
 
 
+similarly
+
+* earliest= -2400m@h latest= -1m@m
+
+m - minutes and granularity of hour
+
+__________________________________________________
+process = sudo
+
+will comeup with all sudo commands logged.
+
+__________________________________________________
+
+eventtype= "unix_authentication" AND by vagrant
+
+eventtype can be any events like nix_config, kernel etc.
+
+*****AND Keyword is always optional ******
+
+eventtype= "unix_authentication" by vagrant will also produce same results
+
+
+(eventtype=nix_configs by apt) OR shutdown AND (earliest= -500h AND latest= -1h)
+__________________________________________________
+
+************Pipe operators*************************
+
+--> * | top user
+or * | top user by host
+
+
+*  host!="india-Lenovo-ideapad-330-15IKB" | top  user by host
+
+same as 
+
+* NOT host = "india" | top user by host
+
+--> pwd - present working directory log
+
+____________________________________________________
+**********Regular expression queries*****************
+
+PWD |rex "PWD=(?<pwd>[^;]+)"
+
+rex-- regular expression 
+pwd = find following files in present directory
+
+
+When you add data to the Splunk platform the data is indexed. As part of the  index process, information is extracted from your data and formatted as name and value pairs, called fields. When you run a search, the fields are identified and listed in the Fields sidebar next to your search results. The fields are divided into two categories.
+
+Selected fields are visible in your search results. By default, host, source, and sourcetype appear. You can select other fields to show in your events.
+Interesting fields are other fields that have been extracted from the events in your search results. Indexing*
 
