@@ -68,5 +68,44 @@ pwd = find following files in present directory
 When you add data to the Splunk platform the data is indexed. As part of the  index process, information is extracted from your data and formatted as name and value pairs, called fields. When you run a search, the fields are identified and listed in the Fields sidebar next to your search results. The fields are divided into two categories.
 
 Selected fields are visible in your search results. By default, host, source, and sourcetype appear. You can select other fields to show in your events.
-Interesting fields are other fields that have been extracted from the events in your search results. Indexing*
+Interesting fields are other fields that have been extracted from the events in your search results. 
+
+____________________________________________________Fields and indexing___________________________
+
+Field - key, value pair
+
+Extracted fields
+
+The Splunk software extracts fields from event data at index time and at search time.
+
+***Index time
+
+The time span from when the Splunk software receives new data to when the data is written to an index. During index time, the data is parsed into segments and events. Default fields and timestamps are extracted, and transforms are applied.
+
+*** Search time
+
+The period of time beginning when a search is launched and ending when the search finishes. During search time, certain types of event processing take place, such as search time field extraction, field aliasing, source type renaming, event type matching, and so on.
+
+The default fields and other indexed fields are extracted for each event when your data is indexed.
+
+When you first run a search the Selected Fields list contains the default fields host, source, and sourcetype. These default fields appear in every event.
+
+Interesting Fields are fields that appear in at least 20% of the events.
+
+
+example - 
+	-- sourcetype=access_* status=200 action=purchase
+	-- sourcetype=access_* status=200 action=purchase
+
+____________________________________________________________________________________________________
+
+PIPE ( | )
+
+
+After action=purchase, type a pipe character ( | ) into the Search bar.
+The pipe character indicates that you are about to use a command. The results of the search to the left of the pipe are used as the input to the command to the right of the pipe. You can pass the results of one command into another command in a series, or pipeline, of search commands.
+
+
+
+
 
