@@ -105,7 +105,69 @@ PIPE ( | )
 After action=purchase, type a pipe character ( | ) into the Search bar.
 The pipe character indicates that you are about to use a command. The results of the search to the left of the pipe are used as the input to the command to the right of the pipe. You can pass the results of one command into another command in a series, or pipeline, of search commands.
 
+____________________________________________________________________________________________________
+
+Sample Reports --
+
+Reports are like saved searches over the time...
+
+Error report Query -> error OR failed OR severe OR ( sourcetype=access_* ( 404 OR 500 OR 503 ) )
+
+TimeChart
+
+source="/var/log/*" host="india-Lenovo-ideapad-330-15IKB" | timechart count
+
+we pipe the data to the timechart by counting the data occurance at that time...
 
 
 
+Alert----
+
+add alert on a specific condition, report will always be saved but alerts will be made or saved only when the alert condition is met.
+
+
+____________________________________________________________________________________________________
+____________________________________________________________________________________________________
+____________________________________________________________________________________________________
+___________________________________ Forwarder  universal____________________________________________
+____________________________________________________________________________________________________
+____________________________________________________________________________________________________
+____________________________________________________________________________________________________
+
+The universal forwarder
+
+About the universal forwarder
+
+The universal forwarder collects data from a data source or another forwarder and sends it to a forwarder or a Splunk deployment. With a universal forwarder, you can send data to Splunk Enterprise, Splunk Light, or Splunk Cloud. It also replaces the Splunk Enterprise light forwarder. The universal forwarder is available as a separate installation package.
+
+The universal forwarder offers advantages over using a heavy or light forwarder. The most notable benefit is that it uses significantly fewer hardware resources than other Splunk software products. It can, for example, coexist on a host that runs a Splunk Enterprise instance. It also is more scalable than the other Splunk products, as you can install thousands of universal forwarders with little impact on network and host performance.
+
+Another benefit is its availability for installation on many diverse computing platforms and architectures. You can install it on more platforms than you can Splunk Enterprise.
+
+The universal forwarder includes only the essential components that it needs to forward data to other Splunk platform instances. While it does not have a Web interface, you can still configure, manage, and scale it by editing configuration files or by using the Forwarder Management or Monitoring Console interfaces in Splunk Web.
+
+--> download forwarder
+--> opt/splunkforwarder/bin ./splunk start --accept-license
+
+--> ./splunk enable boot-start
+
+Forward log to central server by  
+
+-->  opt/splunkforwarder/bin  ./splunk add forwarder 192.168.1.161:1997
+
+and also allow splunk to monitor all the files (which files to forward to)..so here we specify the files that need to be monitored by forwarder
+
+--> ./splunk add monitor /var/log/
+
+--> can also specify additional properties like - 
+
+./splunk add monitor /var/log/ -index main -sourcetype MyUniversalLogForwarder
+
+will index this data in main index and name the source type as MyUniversalLogForwarder
+
+______________________________________________________________________________________________
+
+finally make sure that the port at the recieving end i.e. splunk is open for data-
+
+----->  ./splunk enable listen 9997
 
