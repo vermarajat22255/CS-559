@@ -1,0 +1,1 @@
+select Course,Grade, count(*) as Freq_counts from grades where Course = 'SSW 810' group by Grade limit 1

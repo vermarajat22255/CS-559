@@ -1,0 +1,1 @@
+select student_majors.Major, count(*) as total_number from student_majors group by student_majors.Major

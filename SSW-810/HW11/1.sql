@@ -1,0 +1,1 @@
+select Name from student_majors where student_majors.CWID = '10115'
